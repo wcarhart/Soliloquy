@@ -9,4 +9,5 @@ def stage(request):
 	context = {
 		'apps': apps,
 	}
-	return render(request, 'stage.html', context)
+	return render(request, 'stage_index.html', context)
+	
