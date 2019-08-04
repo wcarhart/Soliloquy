@@ -10,7 +10,7 @@
 
 		<!-- static CSS -->
 		{% load static %}
-		<link rel="stylesheet" href="{% static 'style.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
 		<link rel="stylesheet" href="{% static 'css/fixed.css' %}">
 		<link rel="stylesheet" href="{% static 'css/animate.css' %}">
 		<link rel="stylesheet" href="{% static 'css/arrow.css' %}">
@@ -31,13 +31,47 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<h1>Here be apps!</h1>
+		<div id="landing">
+			<!-- navigation-->
+			<nav class="navbar navbar-expand-sm fixed-top">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="{% url 'stage' %}">Soliloquy</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+						<span class="custom-toggler-icon"><i class="fas fa-bars"></i></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="">TODO</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!-- end navigation -->
+
+			<!-- description -->
+			<div class="container-fluid">
+
+			</div>
+			<!-- end description -->
+
+			<!-- page content -->
+			<div id="content">
+				<div class="container-fluid projects-wrapper">
+					{% block app_content %}{% endblock %}
+				</div>
+			</div>
+			<!-- end page content -->
+
+		</div>
 
 		<!-- script source files -->
 		<script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
-		<script src="{% static 'js/custom.js' %}"></script>
 		<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-		<script src="{% static 'js/waypoints.js' %}"></script>
+		<script src="{% static 'js/projects-waypoints.js' %}"></script>
 		<!-- end script source files -->
+
 	</body>
 </html>

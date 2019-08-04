@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+:root {
+	--main: #e8a87c;
+	--maindark: #B57549;
+
+	--blog: #85dcbf;
+	--blogdark: #52A98C;
+
+	--dark: #2c3840;
+	--darkdark: #00050D;
+
+	--light: #feffff;
+	--lightdark: #CBCCCC;
+	
+	--highlight: #ffe29d;
+	--highlightdark: #ffcb51;
+
+	--info: #D8EDF7;
+	
+	--danger: #F3DDDE;
+}
+
+body {
+	overflow-x: hidden;
+	font-family: 'Lato', sans-serif;
+	color: var(--dark);
+}
+
+.offset:before {
+	display: block;
+	content: "";
+	height: 4rem;
+	margin-top: -4rem;
+}
+
+[class*="col-"] {
+	padding: 1rem;
+}
+
+/*-- navigation --*/
+.navbar {
+	background-color: black;
+	padding: .7rem 1rem;
+	text-transform: uppercase;
+	font-size: .9rem;
+	font-weight: 700;
+	letter-spacing: .1rem;
+	transition: background-color .5s ease 0s;
+}
+.navbar-brand {
+	color: var(--light);
+}
+.svg-inline--fa.fa-w-14 {
+	color: var(--light);
+	font-size: 1.6rem;
+}
+#blog-nav-item {
+	color: var(--blog);
+}
+.navbar-nav li {
+	padding-right: .8rem;
+}
+.navbar-nav .nav-link {
+	color: var(--light);
+	padding-top: .8rem;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+	color: var(--main);
+}
+.navbar-brand:hover {
+	color: var(--main);
+}
+.navbar.solid {
+	background: rgba(0, 0, 0, 0.7)!important;
+	transition: background-color 1s ease 0s;
+}
+/*-- end navigation --*/
