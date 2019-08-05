@@ -1,3 +1,6 @@
+{% load static %}
+{% load app_filters %}
+
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -9,7 +12,6 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 		<!-- static CSS -->
-		{% load static %}
 		<link rel="stylesheet" href="{% static 'css/style.css' %}">
 		<link rel="stylesheet" href="{% static 'css/fixed.css' %}">
 		<link rel="stylesheet" href="{% static 'css/animate.css' %}">
@@ -43,7 +45,7 @@
 					<div class="collapse navbar-collapse" id="navbarResponsive">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item">
-								<a class="nav-link" href="">TODO</a>
+								<a class="nav-link" href="">About</a>
 							</li>
 						</ul>
 					</div>
@@ -52,15 +54,39 @@
 			<!-- end navigation -->
 
 			<!-- description -->
-			<div class="container-fluid">
+			<div id="description">
+				<div class="container-fluid apps-wrapper">
 
+				</div>
 			</div>
 			<!-- end description -->
 
 			<!-- page content -->
-			<div id="content">
-				<div class="container-fluid projects-wrapper">
-					{% block app_content %}{% endblock %}
+			<div id="content" class="narrow">
+				<div class="container-fluid app-wrapper">
+					<div class="os-animation" data-animation="fadeInUp">
+						<h1>TODO</h1>
+					</div>
+					<div class="row">
+						{% for app in apps %}
+						<div class="app-item col-md-4">
+							{% with forloop.counter|mod:3 as app_index %}
+							<div class="os-animation" data-animation="fadeInUp" data-delay="{{ app_index|multiply:0.1 }}s">
+								<div class="card mb-2" onclick="location.href='{{ app.url }}';" style="cursor: pointer;">
+									{% static "" as baseUrl %}
+									<img class="card-img-top" src="{% static '' %}img/{{ app.img }}" style="background-color: {{ app.color }};">
+									<div class="card-body">
+										<h5 class="card-title">{{ app.name }}</h5>
+										<h6 class="card-subtitle mb-2 text-muted"><i>{{ app.author }}</i></h3>
+										<p class="card-text">{{ app.blurb }}</p>
+										<a href="{{ app.url }}" target="_blank" class="btn btn-primary">TODO</a>
+									</div>
+								</div>
+							</div>
+							{% endwith %}
+						</div>
+						{% endfor %}
+					</div>
 				</div>
 			</div>
 			<!-- end page content -->

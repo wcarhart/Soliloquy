@@ -1,13 +1,10 @@
 from django.shortcuts import render
 from .models import App
-from random import shuffle
 
 # Create your views here.
 def stage(request):
-	apps = App.objects.all()
-	shuffle(apps)
+	apps = App.objects.order_by('?')
 	context = {
 		'apps': apps,
 	}
-	return render(request, 'stage_index.html', context)
-	
+	return render(request, 'stage.html', context)

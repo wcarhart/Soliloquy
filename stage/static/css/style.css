@@ -26,6 +26,10 @@ body {
 	color: var(--dark);
 }
 
+#content {
+	padding-top: 4rem;
+}
+
 .offset:before {
 	display: block;
 	content: "";
@@ -76,3 +80,31 @@ body {
 	transition: background-color 1s ease 0s;
 }
 /*-- end navigation --*/
+
+/*-- app container, index --*/
+.narrow {
+	width: 75%;
+	margin: 0 auto;
+}
+.apps-container h1 {
+	padding: 2rem 0;
+}
+.app-item {
+	padding-bottom: 2rem;
+	transition: transform .4s ease;
+}
+.app-item:hover {
+	transform: scale(1.1);
+}
+.app-item a {
+	background-color: var(--main);
+	border-color: var(--main);
+	border-radius: 0;
+}
+.app-item a:active,
+.app-item a:hover,
+.app-item a:focus {
+	border-color: var(--maindark)!important;
+	background-color: var(--maindark)!important;
+}
+/*-- end app container, index--*/

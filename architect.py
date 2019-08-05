@@ -22,13 +22,13 @@ def build_app(file):
 	with open(file, 'r') as f:
 		contents = [content.replace('\n', '') for content in f.readlines()]
 
-	name = author = blurb = description = link = img = ''
+	name = author = blurb = description = url = img = ''
 	for line in contents:
 		if line == '---' or line == '':
 			continue
 
 		items = line.split(':')
-		field, value = cleanse(items[0]), cleanse(''.join(items[1:]))
+		field, value = cleanse(items[0]), cleanse(':'.join(items[1:]))
 
 		if field == 'name':
 			name = value
@@ -38,20 +38,21 @@ def build_app(file):
 			blurb = value
 		elif field == 'description':
 			description = value
-		elif field == 'link':
-			link = value
+		elif field == 'url':
+			url = value
 		elif field == 'img':
 			img = value
 		else:
 			return None
 
-	if not all([name, author, blurb, description, link, img]):
+	if not all([name, author, blurb, description, url, img]):
 		return None
 	app = App(
 		name=name,
+		author=author,
 		blurb=blurb,
 		description=description,
-		link=link,
+		url=url,
 		img=img
 	)
 	return app
@@ -73,6 +74,10 @@ def build_all_apps(source='content'):
 
 	return apps
 
-if __name__ == '__main__':
+def main():
 	apps = build_all_apps()
-	print(apps)
+	for app in apps:
+		app.save()
+
+if __name__ == '__main__':
+	main()
