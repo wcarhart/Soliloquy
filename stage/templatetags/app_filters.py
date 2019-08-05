@@ -46,6 +46,8 @@ def time(creation_date):
 		quatity = 'year'
 
 	if value == 1:
+		if quatity == 'day':
+			return "Added yesterday"
 		return f"Added {value} {quatity} ago"
 	return f"Added {value} {quatity}s ago"
 

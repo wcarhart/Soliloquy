@@ -5,4 +5,4 @@ blurb: Portfolio, personal website, full-stack web app
 description: Portfolio, personal website, full-stack web app
 url: https://www.willcarh.art
 img: temp.png
-timestamp: August 3rd, 2019
+timestamp: August 4th 2019

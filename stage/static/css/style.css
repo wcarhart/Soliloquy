@@ -88,6 +88,19 @@ body {
 /*-- end navigation --*/
 
 /*-- app container, index --*/
+#welcome {
+	padding-top: 4rem;
+}
+#welcome a {
+	color: var(--main);
+	text-decoration: none;
+}
+#welcome a:active,
+#welcome a:hover,
+#welcome a:focus {
+	color: var(--maindark);
+}
+
 .narrow {
 	width: 75%;
 	margin: 0 auto;
