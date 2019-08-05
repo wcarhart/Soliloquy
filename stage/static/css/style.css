@@ -63,10 +63,6 @@ body {
 .navbar-brand {
 	color: var(--light);
 }
-.svg-inline--fa.fa-w-14 {
-	color: var(--light);
-	font-size: 1.6rem;
-}
 .navbar-nav li {
 	padding-right: .8rem;
 }
@@ -190,6 +186,32 @@ body {
 	font-size: 4rem;
 }
 .section {
-	margin-bottom: 4rem;
+	margin-bottom: 5rem;
+}
+.section a {
+	color: var(--main);
+	text-decoration: none;
+}
+.section a:active,
+.section a:hover,
+.section a:focus {
+	color: var(--maindark);
+}
+.no-space {
+	margin-bottom: 0;
+}
+.content-container {
+	margin-bottom: 2rem;
+}
+#logo {
+	width: 100%;
+	height: 100%;
+	max-width: 1.6rem;
+	max-height: 1.6rem;
+}
+.svg-inline--fa.fa-w-14 {
+	color: var(--main);
+	font-size: 1.6rem;
+	margin: 0 1rem;
 }
 /*-- end about section --*/

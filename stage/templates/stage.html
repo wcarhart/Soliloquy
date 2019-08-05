@@ -67,10 +67,10 @@
 							<div class="card app-item" onclick="location.href='{{ app.url }}';" style="cursor: pointer;">
 								{% if app.img == 'default.png' %}
 									{% with color=colors|random %}
-									<img class="card-img-top" style="background-color: {{ color }};" src="{% static '' %}img/{{ app.img }}">
+									<img class="card-img-top" alt="Demo picture for {{ app.name }}" style="background-color: {{ color }};" src="{% static '' %}img/{{ app.img }}">
 									{% endwith %}
 								{% else %}
-									<img class="card-img-top" src="{% static '' %}img/{{ app.img }}" style="background-color: {{ app.color }};">
+									<img class="card-img-top" alt="Demo picture for {{ app.name }}" src="{% static '' %}img/{{ app.img }}">
 								{% endif %}
 								<div class="card-body">
 									<h5 class="card-title">{{ app.name }}</h5>
