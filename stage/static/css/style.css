@@ -29,6 +29,40 @@
 /*uncomment this line for debugging*/
 /** { outline: solid 0.25rem black; }*/
 
+/*-- animation --*/
+html {
+	height:100%;
+}
+.bg {
+	animation: slide 10s ease-in-out infinite alternate;
+	background-image: linear-gradient(-60deg, var(--defaultcolor3) 50%, var(--defaultcolor4) 50%);
+	top: 0;
+	bottom: 0;
+	left: -50%;
+	right: -50%;
+	opacity: 0.5;
+	position: fixed;
+	z-index: -1;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 11s;
+}
+
+.bg3 {
+  animation-duration: 12s;
+}
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+/*-- end animation --*/
+
 body {
 	overflow-x: hidden;
 	font-family: 'Lato', sans-serif;
@@ -85,7 +119,11 @@ body {
 
 /*-- app container, index --*/
 #welcome {
-	padding-top: 4rem;
+	margin-top: 4rem!important;
+	margin-bottom: 2rem;
+	padding: 0.5rem 1rem 0.1rem 1rem;
+	background-color: var(--light);
+	border-radius: 0.2rem;
 }
 #welcome a {
 	color: var(--main);
@@ -106,9 +144,10 @@ body {
 }
 .app-item {
 	transition: transform .4s ease;
+	background-color: var(--light);
 }
 .card {
-	margin: 1rem;
+	margin-bottom: 2rem!important;
 }
 .app-item:hover {
 	transform: scale(1.05);

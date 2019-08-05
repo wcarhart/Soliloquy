@@ -38,7 +38,7 @@
 		<div class="bg bg2"></div>
 		<div class="bg bg3"></div>
 		<!-- end animation -->
-		
+
 		<div id="landing">
 			<!-- navigation-->
 			<nav class="navbar navbar-expand-sm fixed-top">
@@ -62,9 +62,11 @@
 			<!-- page content -->
 			<div id="content" class="narrow">
 				<div class="container-fluid apps-wrapper">
-					<div id="welcome" class="os-animation container-fluid" data-animation="fadeInUp">
-						<h1>Welcome!</h1>
-						<p class="lead">Welcome to Soliloquy! This is a place to show off cool coding projects. If you'd like to add a project, please follow <a href="" target="_blank">these instructions</a>. Otherwise, enjoy!</p>
+					<div class="os-animation" data-animation="fadeInUp">
+						<div id="welcome" class="container-fluid">
+							<h1>Welcome!</h1>
+							<p class="lead">Welcome to Soliloquy! This is a place to show off cool coding projects. If you'd like to add a project, please follow <a href="" target="_blank">these instructions</a>. Otherwise, enjoy!</p>
+						</div>
 					</div>
 					<div class="card-columns">
 						{% for app in apps %}
