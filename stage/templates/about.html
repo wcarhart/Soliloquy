@@ -1,2 +1,103 @@
 <!-- Add to about eventually: -->
 <div>Icons made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+{% load static %}
+{% load app_filters %}
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Soliloquy</title>
+		<meta name="description" content="(n) an act of speaking one's thoughts aloud when by oneself or regardless of any hearers">
+
+		<!-- Bootstrap CDN -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+		<!-- static CSS -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" href="{% static 'css/fixed.css' %}">
+		<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+		<link rel="stylesheet" href="{% static 'css/arrow.css' %}">
+		<link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+		<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+		<link rel="stylesheet" href="{% static 'css/owl.theme.default.css' %}">
+		<link rel="stylesheet" href="{% static 'css/waypoints.css' %}">
+
+		<!-- icons, because I'm extra -->
+		<link rel="apple-touch-icon" sizes="180x180" href="{% static 'ico/apple-touch-icon.png' %}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{% static 'ico/favicon-32x32.png' %}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{% static 'ico/favicon-16x16.png' %}">
+		<link rel="manifest" href="{% static 'ico/site.webmanifest' %}">
+
+		<!-- Bootstrap to make page load faster -->
+		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div id="landing">
+			<!-- navigation-->
+			<nav class="navbar navbar-expand-sm fixed-top">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="{% url 'stage' %}">Soliloquy</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+						<span class="custom-toggler-icon"><i class="fas fa-bars"></i></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="{% url 'about' %}">About</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!-- end navigation -->
+
+			<!-- page content -->
+			<div id="content" class="narrow">
+				<div id="title" class="section container-fluid">
+					<h1>Soliloquy</h1>
+					<p class="lead text-muted">(n) an act of speaking one's thoughts aloud when by oneself or regardless of any hearers</p>
+				</div>
+				<div id="desc" class="section container-fluid">
+					<h3>What is Soliloquy?</h3>
+					<p class="lead">Soliloquy is a place to show off cool coding projects. Have you been working on something lately? Have you published a web app and want to display it for the world to see? This is what Soliloquy was made for.</p>
+				</div>
+				<div id="faqs" class="section container-fluid">
+					<h3>FAQs</h3>
+					<h5>What does "soliloquy" mean?</h5>
+					<h5>What is soliloquy <strong>not?</strong></h5>
+					Hacker News
+					GitHub
+					Product Hunt?
+					<h5>Can I add a project to Soliloquy?</h5>
+					<h5>Are there any restrictions on what projects can be added to Soliloquy?</h5>
+					No paid promotions
+					No companies
+					No NSFW content
+					<h5>Why the name "soliloquy?"</h5>
+					<h5>How do you pronounce Soliloquy?</h5>
+					<h5>What is Soliloquy written in?</h5>
+					<h5>Who made Soliloquy?</h5>
+				</div>
+				<div id="will" class="section container-fluid">
+					<h3>Will Carhart</h3>
+					<h5>About the developer</h5>
+					<h5>More cool code</h5>
+				</div>
+			</div>
+			<!-- end page content -->
+
+		</div>
+
+		<!-- script source files -->
+		<script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+		<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+		<script src="{% static 'js/projects-waypoints.js' %}"></script>
+		<!-- end script source files -->
+
+	</body>
+</html>

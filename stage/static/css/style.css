@@ -172,3 +172,15 @@ body {
 	padding: 0;
 }
 /*-- end app container, index--*/
+
+/*-- about section --*/
+#title {
+	margin-top: 6rem;
+}
+#title h1 {
+	font-size: 4rem;
+}
+.section {
+	margin-bottom: 4rem;
+}
+/*-- end about section --*/
