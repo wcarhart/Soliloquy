@@ -3,12 +3,12 @@
 	--main: #FB4D3D;
 	--maindark: #E23424;
 
-	--secondary: #03CEA4;
-	--secondarydark: #00B58B;
+	--secondary: #1BE7FF;
+	--secondarydark: #02CEE6;
 
 	--defaultcolor1: #EAC435;
 	--defaultcolor2: #345995;
-	--defaultcolor3: #03CEA4;
+	--defaultcolor3: #1BE7FF;
 	--defaultcolor4: #FB4D3D;
 	--defaultcolor5: #CA1551;
 
@@ -118,16 +118,17 @@ body {
 	transform: scale(1.05);
 }
 .app-item a:not([id^=readMoreButton]) {
-	background-color: var(--main);
-	border-color: var(--main);
+	background-color: var(--secondary);
+	border-color: var(--secondary);
+	color: var(--dark);
 	border-radius: 0;
 	margin: 0.5rem 0;
 }
 .app-item a:active:not([id^=readMoreButton]),
 .app-item a:hover:not([id^=readMoreButton]),
 .app-item a:focus:not([id^=readMoreButton]) {
-	border-color: var(--maindark)!important;
-	background-color: var(--maindark)!important;
+	border-color: var(--secondarydark)!important;
+	background-color: var(--secondarydark)!important;
 }
 .card-columns {
 	@include media-breakpoint-only(md) {
@@ -167,9 +168,17 @@ body {
 	background-color: transparent;
 	color: var(--main);
 }
+[id*=readmore]:active,
+[id*=readmore]:hover,
+[id*=readmore]:focus {
+	color: var(--maindark);
+}
+
 [id*=readMoreButton] {
 	margin: 0;
 	padding: 0;
+	color: var(--main);
+	background-color: var(--main);
 }
 /*-- end app container, index--*/
 
