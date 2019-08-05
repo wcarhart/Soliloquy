@@ -12,8 +12,8 @@ django.setup()
 import os
 import glob
 from stage.models import App
-
-import sys
+import datetime
+import parsedatetime
 
 def cleanse(s):
 	return s.strip('"').strip("'").strip('\n').strip(' ')
@@ -22,7 +22,7 @@ def build_app(file):
 	with open(file, 'r') as f:
 		contents = [content.replace('\n', '') for content in f.readlines()]
 
-	name = author = author_github = blurb = description = url = img = ''
+	name = author = author_github = blurb = description = url = img = timestamp = ''
 	for line in contents:
 		if line == '---' or line == '':
 			continue
@@ -44,10 +44,21 @@ def build_app(file):
 			url = value
 		elif field == 'img':
 			img = value
+		elif field == 'timestamp':
+			try:
+				parse = parsedatetime.Calendar()
+				time_struct, parse_status = parse.parse(value)
+				if not parse_status == 1:
+					return None
+				dt = datetime.datetime(*time_struct[:6])
+				timestamp = dt.timestamp()
+			except ValueError:
+				return None
 		else:
 			return None
 
-	if not all([name, author, blurb, description, url, img]):
+	# author_github is optional
+	if not all([name, author, blurb, description, url, img, timestamp]):
 		return None
 	app = App(
 		name=name,
@@ -56,7 +67,8 @@ def build_app(file):
 		blurb=blurb,
 		description=description,
 		url=url,
-		img=img
+		img=img,
+		timestamp=timestamp
 	)
 	return app
 
@@ -74,6 +86,8 @@ def build_all_apps(source='content'):
 		app = build_app(file)
 		if not app == None:
 			apps.append(app)
+		else:
+			print(f"Could not load app from file '{file}'")
 
 	return apps
 
