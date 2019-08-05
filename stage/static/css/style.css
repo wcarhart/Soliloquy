@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 :root {
-	--main: #e8a87c;
-	--maindark: #B57549;
+	--main: #FB4D3D;
+	--maindark: #E23424;
 
-	--blog: #85dcbf;
-	--blogdark: #52A98C;
+	--secondary: #03CEA4;
+	--secondarydark: #00B58B;
+
+	--defaultcolor1: #EAC435;
+	--defaultcolor2: #345995;
+	--defaultcolor3: #03CEA4;
+	--defaultcolor4: #FB4D3D;
+	--defaultcolor5: #CA1551;
 
 	--dark: #2c3840;
 	--darkdark: #00050D;
@@ -19,6 +25,9 @@
 	
 	--danger: #F3DDDE;
 }
+
+/*uncomment this line for debugging*/
+/** { outline: solid 0.25rem black; }*/
 
 body {
 	overflow-x: hidden;
@@ -58,9 +67,6 @@ body {
 	color: var(--light);
 	font-size: 1.6rem;
 }
-#blog-nav-item {
-	color: var(--blog);
-}
 .navbar-nav li {
 	padding-right: .8rem;
 }
@@ -70,7 +76,7 @@ body {
 }
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link:hover {
-	color: var(--main);
+	color: var(--secondary);
 }
 .navbar-brand:hover {
 	color: var(--main);
@@ -90,21 +96,66 @@ body {
 	padding: 2rem 0;
 }
 .app-item {
-	padding-bottom: 2rem;
 	transition: transform .4s ease;
 }
-.app-item:hover {
-	transform: scale(1.1);
+.card {
+	margin: 1rem;
 }
-.app-item a {
+.app-item:hover {
+	transform: scale(1.05);
+}
+.app-item a:not([id^=readMoreButton]) {
 	background-color: var(--main);
 	border-color: var(--main);
 	border-radius: 0;
+	margin: 0.5rem 0;
 }
-.app-item a:active,
-.app-item a:hover,
-.app-item a:focus {
+.app-item a:active:not([id^=readMoreButton]),
+.app-item a:hover:not([id^=readMoreButton]),
+.app-item a:focus:not([id^=readMoreButton]) {
 	border-color: var(--maindark)!important;
 	background-color: var(--maindark)!important;
+}
+.card-columns {
+	@include media-breakpoint-only(md) {
+		column-count: 1;
+	}
+	@include media-breakpoint-only(sm) {
+		column-count: 1;
+	}
+	@include media-breakpoint-only(lg) {
+		column-count: 3;
+	}
+	@include media-breakpoint-only(xl) {
+		column-count: 4;
+	}
+}
+.card-img-top {
+	max-height: 1000px;
+	width: 100%;
+	overflow: hidden;
+	object-fit: cover;
+	display: block;
+	margin: 0 auto;
+}
+[id^=more] {
+	display: none;
+}
+.fa-sort-down {
+	margin: 0 0.25rem;
+	position: relative;
+	top: -0.12rem;
+}
+.last-p {
+	margin-bottom: 0;
+}
+[id*=readmore] {
+	background: transparent;
+	background-color: transparent;
+	color: var(--main);
+}
+[id*=readMoreButton] {
+	margin: 0;
+	padding: 0;
 }
 /*-- end app container, index--*/

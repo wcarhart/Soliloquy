@@ -22,7 +22,7 @@ def build_app(file):
 	with open(file, 'r') as f:
 		contents = [content.replace('\n', '') for content in f.readlines()]
 
-	name = author = blurb = description = url = img = ''
+	name = author = author_github = blurb = description = url = img = ''
 	for line in contents:
 		if line == '---' or line == '':
 			continue
@@ -34,6 +34,8 @@ def build_app(file):
 			name = value
 		elif field == 'author':
 			author = value
+		elif field == 'author_github':
+			author_github = value
 		elif field == 'blurb':
 			blurb = value
 		elif field == 'description':
@@ -50,6 +52,7 @@ def build_app(file):
 	app = App(
 		name=name,
 		author=author,
+		author_github=author_github,
 		blurb=blurb,
 		description=description,
 		url=url,
@@ -75,6 +78,10 @@ def build_all_apps(source='content'):
 	return apps
 
 def main():
+	apps = App.objects.all()
+	for app in apps:
+		app.delete()
+
 	apps = build_all_apps()
 	for app in apps:
 		app.save()

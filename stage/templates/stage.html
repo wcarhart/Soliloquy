@@ -45,7 +45,7 @@
 					<div class="collapse navbar-collapse" id="navbarResponsive">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item">
-								<a class="nav-link" href="">About</a>
+								<a class="nav-link" href="{% url 'about' %}">About</a>
 							</li>
 						</ul>
 					</div>
@@ -67,26 +67,53 @@
 					<div class="os-animation" data-animation="fadeInUp">
 						<h1>TODO</h1>
 					</div>
-					<div class="row">
+					<div class="card-columns">
 						{% for app in apps %}
-						<div class="app-item col-md-4">
-							{% with forloop.counter|mod:3 as app_index %}
-							<div class="os-animation" data-animation="fadeInUp" data-delay="{{ app_index|multiply:0.1 }}s">
-								<div class="card mb-2" onclick="location.href='{{ app.url }}';" style="cursor: pointer;">
-									{% static "" as baseUrl %}
+						{% with forloop.counter|mod:3 as app_index %}
+						<div class="os-animation" data-animation="zoomIn" data-delay="{{ app_index|multiply:0.15 }}s">
+							<div class="card app-item" onclick="location.href='{{ app.url }}';" style="cursor: pointer;">
+								{% if app.img == 'default.png' %}
+									{% with color=colors|random %}
+									<img class="card-img-top" style="background-color: {{ color }};" src="{% static '' %}img/{{ app.img }}" style="background-color: {{ app.color }};">
+									{% endwith %}
+								{% else %}
 									<img class="card-img-top" src="{% static '' %}img/{{ app.img }}" style="background-color: {{ app.color }};">
-									<div class="card-body">
-										<h5 class="card-title">{{ app.name }}</h5>
-										<h6 class="card-subtitle mb-2 text-muted"><i>{{ app.author }}</i></h3>
-										<p class="card-text">{{ app.blurb }}</p>
-										<a href="{{ app.url }}" target="_blank" class="btn btn-primary">TODO</a>
+								{% endif %}
+								<div class="card-body">
+									<h5 class="card-title">{{ app.name }}</h5>
+									<h6 class="card-subtitle mb-2 text-muted"><i>{{ app.author }}</i></h6>
+									<p class="card-text lead last-p">{{ app.blurb }}</p>
+									<span id="readmore{{ app.id }}">
+										<a class="btn btn-link btn-sm bg-transparent" onclick="event.stopPropagation(); readMore({{ app.id|safe }})" id="readMoreButton{{ app.id }}">
+											Read more
+											<i class="fas fa-sort-down"></i>
+										</a>
+									</span>
+									<p class="card-text" id="more{{ app.id }}">{{ app.description }}</p>
+									<div class="row">
+										<a href="{{ app.url }}" target="_blank" class="btn btn-primary">Explore</a>
 									</div>
+									<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 								</div>
 							</div>
-							{% endwith %}
 						</div>
+						{% endwith %}
 						{% endfor %}
 					</div>
+					<script>
+						function readMore(appid) {
+							var readmore = document.getElementById("readmore" + appid);
+							var moreText = document.getElementById("more" + appid);
+							var btnText = document.getElementById("readMoreButton" + appid);
+
+							if (readmore.style.display !== "none") {
+								readmore.style.display = "none";
+								btnText.innerHTML = "Read less";
+								moreText.id = "display" + appid;
+								moreText.style.display = "inline";
+							}
+						}
+					</script>
 				</div>
 			</div>
 			<!-- end page content -->
