@@ -78,10 +78,10 @@
 									<img class="card-img-top" alt="Demo picture for {{ app.name }}" style="background-color: {{ color }};" src="{% static '' %}img/{{ app.img }}">
 									{% endwith %}
 								{% else %}
-									<img class="card-img-top" alt="Demo picture for {{ app.name }}" src="{% static '' %}img/{{ app.img }}">
+									<img class="card-img-top" alt="Demo picture for {{ app.name }}" style="padding-top: 2rem; width: 80%;" src="{% static '' %}img/{{ app.img }}">
 								{% endif %}
 								<div class="card-body">
-									<h5 class="card-title">{{ app.name }}</h5>
+									<h3 class="card-title">{{ app.name }}</h3>
 									<h6 class="card-subtitle mb-2 text-muted"><i>{{ app.author }}</i></h6>
 									<p class="card-text lead last-p">{{ app.blurb }}</p>
 									<span id="readmore{{ app.id }}">
