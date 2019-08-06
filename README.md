@@ -1,8 +1,8 @@
+# Soliloquy is currently in ALPHA
+I will not be taking any project contributions until Soliloquy is fully released. I appreciate your patience. You can view the dev concept at https://soliloquy-dev.herokuapp.com.
+
 # [Soliloquy](https://www.soliloquy.dev)
 (n) an act of speaking one's thoughts aloud when by oneself or regardless of any hearers
-
-## Soliloquy is currently in ALPHA
-I will not be taking any project contributions until Soliloquy is fully released. I appreciate your patience.
 
 ## Soliloquy is a place to display and explore cool software hobby projects.
 #### Take a peek for yourself: https://www.soliloquy.dev
