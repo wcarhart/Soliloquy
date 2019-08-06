@@ -73,7 +73,7 @@ def build_app(file):
 	return app
 
 def build_all_apps(source='content'):
-	source = f'stage/{source}'
+	source = f'{source}'
 	if not os.path.isdir(source):
 		return None
 

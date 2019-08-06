@@ -7,7 +7,7 @@ What to submit your own project? Follow the instructions below.
 
 ## Instructions for Contributing
 1. [Fork this repository](https://help.github.com/en/articles/fork-a-repo).
-2. Edit the file `content/template.md`. Use the format described below. When you're done, rename the file `template.md` to the name of your project (e.g. `myproject.md`). If you'd like to add a cover image for your project, add it to the `img/` folder. 
+2. Edit the file `content/template.md`. Use the format described below. When you're done, rename the file `template.md` to the name of your project (e.g. `myproject.md`). If you'd like to add a cover image for your project, add it to the `content/img/` folder. 
 3. Open a new [pull requst](https://help.github.com/en/articles/creating-a-pull-request). Once merged, your project will appear on Soliloquy.
 
 ## Formatting your Contribution Content
