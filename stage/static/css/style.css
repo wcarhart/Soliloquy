@@ -130,8 +130,7 @@ body {
 	text-decoration: none;
 }
 #welcome a:active,
-#welcome a:hover,
-#welcome a:focus {
+#welcome a:hover {
 	color: var(--maindark);
 }
 
@@ -152,16 +151,15 @@ body {
 .app-item:hover {
 	transform: scale(1.05);
 }
-.app-item a:not([id^=readMoreButton]) {
+.app-item a:not([id^=readMoreButton]):not(#author_github) {
 	background-color: var(--secondary);
 	border-color: var(--secondary);
 	color: var(--dark);
 	border-radius: 0;
 	margin: 0.5rem 0;
 }
-.app-item a:active:not([id^=readMoreButton]),
-.app-item a:hover:not([id^=readMoreButton]),
-.app-item a:focus:not([id^=readMoreButton]) {
+.app-item a:active:not([id^=readMoreButton]):not(#author_github),
+.app-item a:hover:not([id^=readMoreButton]):not(#author_github) {
 	border-color: var(--secondarydark)!important;
 	background-color: var(--secondarydark)!important;
 }
@@ -204,8 +202,7 @@ body {
 	color: var(--main);
 }
 [id*=readmore]:active,
-[id*=readmore]:hover,
-[id*=readmore]:focus {
+[id*=readmore]:hover {
 	color: var(--maindark);
 }
 
@@ -214,6 +211,20 @@ body {
 	padding: 0;
 	color: var(--main);
 	background-color: var(--main);
+}
+.minimal {
+	padding: 0!important;
+	margin: 0!important;
+}
+#author_github {
+	color: var(--main);
+	margin: 0 0.5rem!important;
+	padding: 0!important;
+	display: inline-block;
+}
+#author_github:active,
+#author_github:hover {
+	color: var(--maindark);
 }
 /*-- end app container, index--*/
 
@@ -232,8 +243,7 @@ body {
 	text-decoration: none;
 }
 .section a:active,
-.section a:hover,
-.section a:focus {
+.section a:hover {
 	color: var(--maindark);
 }
 .no-space {

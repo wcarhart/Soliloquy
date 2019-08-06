@@ -90,7 +90,10 @@
 									<div class="row">
 										<a href="{{ app.url }}" target="_blank" class="btn btn-primary">Explore</a>
 									</div>
-									<p class="card-text"><small class="text-muted">{{ app.timestamp|time }}</small></p>
+									<div class="row minimal">
+										<p class="card-text minimal"><small class="text-muted">{{ app.timestamp|time }}</small></p>
+										<a class="minimal" id="author_github" href="{{ app.author_github }}" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-github" data-fa-transform="down-1"></i></a>
+									</div>
 								</div>
 							</div>
 						</div>
