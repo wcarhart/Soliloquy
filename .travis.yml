@@ -1,9 +1,6 @@
 language: python
 python: 
   - "3.6.8"
-env:
-  - DJANGO_VERSION=2.2.4
-  - DJANGO_SETTINGS_MODULE='soliloquy.settings'
 install:
   - pip install -r requirements.txt
 stages:
@@ -15,8 +12,7 @@ stages:
     branches:
       except: master
   - name: prod-deploy
-    if: type = pull_request
-    if: branch = master
+    if: type = pull_request AND branch = master
 
 jobs:
   include:
