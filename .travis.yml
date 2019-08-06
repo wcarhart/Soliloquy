@@ -21,8 +21,8 @@ stages:
 jobs:
   include:
     - stage: dev-test
-      script: python test_dev_test.py
+      script: python scripts/test_dev_test.py
     - stage: dev-deploy
-      script: python test_dev_deploy.py
+      script: python scripts/test_dev_deploy.py
     - stage: prod-deploy
-      script: python test_prod_deploy.py
+      script: python scripts/test_prod_deploy.py
