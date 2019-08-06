@@ -48,6 +48,8 @@ The fields in `template.md` must adhere to the following format restrictions:
 * *img* **[optional]** a valid image filename for the corresponding image file in `content/img/` (if you do not provide an image, a default one will be provided for you)
 * *timestamp* **[required]** an unambiguous timestamp of today's date, suggested format is "Month Day, Year"
 
+In addition, there cannot be any name conflicts between filenames. If `project.md` already exists, you'll have to name your file `project2.md` or something like that. This goes for image files as well. However, this is not the case for the actual _project name_ in the content of the `.md` file, just the filename.
+
 These restrictions will be tested when you submit your PR by Soliloquy's CI.
 
 ## Content restrictions
