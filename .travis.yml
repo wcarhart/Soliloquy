@@ -17,8 +17,20 @@ stages:
 jobs:
   include:
     - stage: dev-test
+      before-script:
+        - echo $TRAVIS_EVENT_TYPE
+        - echo $TRAVIS_PULL_REQUEST
+        - echo $TRAVIS_PULL_REQUEST_BRANCH
       script: python scripts/test_dev_test.py
     - stage: dev-deploy
+      before-script:
+        - echo $TRAVIS_EVENT_TYPE
+        - echo $TRAVIS_PULL_REQUEST
+        - echo $TRAVIS_PULL_REQUEST_BRANCH
       script: python scripts/test_dev_deploy.py
     - stage: prod-deploy
+      before-script:
+        - echo $TRAVIS_EVENT_TYPE
+        - echo $TRAVIS_PULL_REQUEST
+        - echo $TRAVIS_PULL_REQUEST_BRANCH
       script: python scripts/test_prod_deploy.py
