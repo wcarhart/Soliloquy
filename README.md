@@ -42,7 +42,7 @@ The fields in `template.md` must adhere to the following format restrictions:
 * *blurb* **[required]** a string, maximum length is 100 characters
 * *description* **[required]** a string, maximum length is 1000 characters
 * *url* **[required]** a valid URL
-* *img* **[optional]** a valid image filename for the corresponding image file in `img/`
+* *img* **[optional]** a valid image filename for the corresponding image file in `img/` (if you do not provide an image, a default one will be provided for you)
 * *timestamp* **[required]** an unambiguous timestamp of today's date, suggested format is "Month Day, Year"
 
 These restrictions will be tested when you submit your PR by Soliloquy's CI.
