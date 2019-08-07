@@ -288,7 +288,7 @@ def update_github(travis_repo_slug, travis_pull_request, results):
 	payloads = []
 	for result in results:
 		if result.status_code == 1:
-			payload.append(update_template('error.md', result))
+			payload.append(update_template('scripts/error.md', result))
 			error = True
 	
 	if not error:
@@ -299,7 +299,7 @@ def update_github(travis_repo_slug, travis_pull_request, results):
 			short_message='',
 			long_message=''
 		)
-		payloads.append(update_template('success.md', ce))
+		payloads.append(update_template('scripts/success.md', ce))
 
 	for payload in payloads:
 		GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
