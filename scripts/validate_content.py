@@ -292,7 +292,14 @@ def update_github(travis_repo_slug, travis_pull_request, results):
 			error = True
 	
 	if not error:
-		payloads.append(update_template('success.md', result))
+		ce = ContentError(
+			status_code='',
+			filename='',
+			field='',
+			short_message='',
+			long_message=''
+		)
+		payloads.append(update_template('success.md', ce))
 
 	for payload in payloads:
 		GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
