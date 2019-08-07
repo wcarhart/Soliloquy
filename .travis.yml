@@ -5,9 +5,9 @@ install:
   - pip install -r requirements.txt
 stages:
   - name: dev-test
-    if: type = pull_request AND branch != master
+    if: type = pull_request AND NOT branch = master
   - name: dev-deploy
-    if: type = pull_request AND branch != master
+    if: type = pull_request AND NOT branch = master
   - name: prod-deploy
     if: type = pull_request AND branch = master
 
