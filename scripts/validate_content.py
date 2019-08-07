@@ -43,6 +43,7 @@ Other rules:
 import re
 import os
 import glob
+import json
 import requests
 import datetime
 import argparse
@@ -289,7 +290,14 @@ def update_github(travis_repo_slug, travis_pull_request, results):
 		else:
 			payload = update_template('success.md', result)
 
-	# TODO: use GitHub API to send payload as comment to PR
+	GAUTH = os.environ.get('GAUTH')
+	headers = { 'Authorization': f'token {GAUTH}' }
+	content = { 'body': f'{payload}' }
+	requests.post(
+		f'https://api.github.com/repos/{travis_repo_slug}/issues/{travis_pull_request}/comments',
+		headers=headers,
+		data=content
+	)
 	print(payload)
 
 def build_parser():
