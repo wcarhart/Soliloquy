@@ -77,7 +77,7 @@ def validate_content(file, content_dir):
 	if not author_github == '':
 		assert str(author_github), "Invalid field: 'author_github'"
 		assert 'github.com' in author_github, "Field 'author_github must be a GitHub URL"
-		assert requests.get(author_github), "URL provided for field 'author_github' returned an error HTTP code when accessed"
+		assert requests.get(author_github, timeout=15), "URL provided for field 'author_github' returned an error HTTP code when accessed"
 
 	# validate blurb
 	assert 'blurb' in contents, "Missing required field: 'blurb'"
@@ -92,13 +92,15 @@ def validate_content(file, content_dir):
 	# validate url
 	assert 'url' in contents, "Missing required field: 'url'"
 	assert str(contents['url']), "Invalid field: 'url'"
-	assert requests.get(contents['url']), "URL provided for field 'url' returned an error HTTP code when accessed"
+	assert requests.get(contents['url'], timeout=15), "URL provided for field 'url' returned an error HTTP code when accessed"
 
 	# validate img
 	img = contents.get('img', '')
 	if not img == '':
 		reserved_file_names = ['about', 'default', 'willcarhartportfolio']
-		filename, _ = os.path.splitext(img)
+		supported_filetypes = ['.png', '.jpg', '.jpeg', '.gif']
+		filename, filetype = os.path.splitext(img)
+		assert filetype in supported_filetypes, f"Filetype not supported for field 'img'"
 		assert not filename in reserved_file_names, "Filename provided for field 'img' is prohibited"
 		assert os.path.isfile(f'{content_dir}/app_img/{img}'), f"Filename provided for field 'img' not found, no such file '{content_dir}/app_img/{img}'"
 
@@ -125,6 +127,8 @@ def validate_content(file, content_dir):
 def main():
 	content_dir = os.path.abspath('../content/')
 	files = glob.glob(f'{content_dir}/*.md')
+	if 'template.md' in files:
+		del files['template.md']
 	for file in files:
 		print(f"Validating {file}...")
 		validate_content(file, content_dir)
