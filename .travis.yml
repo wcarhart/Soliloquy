@@ -5,30 +5,19 @@ install:
   - pip install -r requirements.txt
 stages:
   - name: dev-test
-    if: type = pull_request
+    if: (type = pull_request) AND (NOT (branch = master))
   - name: dev-deploy
-    if: type = pull_request
+    if: (type = pull_request) AND (NOT (branch = master))
   - name: prod-deploy
-    if: type = pull_request
-
+    if: (type = pull_request) AND (branch = master)
 jobs:
   include:
     - stage: dev-test
       script:
-        - echo $TRAVIS_EVENT_TYPE
-        - echo $TRAVIS_PULL_REQUEST
-        - echo $TRAVIS_PULL_REQUEST_BRANCH
         - python scripts/test_dev_test.py
     - stage: dev-deploy
       script: 
-        - echo $TRAVIS_EVENT_TYPE
-        - echo $TRAVIS_PULL_REQUEST
-        - echo $TRAVIS_PULL_REQUEST_BRANCH
         - python scripts/test_dev_deploy.py
     - stage: prod-deploy
-      if: branch = master
       script: 
-        - echo $TRAVIS_EVENT_TYPE
-        - echo $TRAVIS_PULL_REQUEST
-        - echo $TRAVIS_PULL_REQUEST_BRANCH
         - python scripts/test_prod_deploy.py
