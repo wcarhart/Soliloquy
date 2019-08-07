@@ -63,47 +63,47 @@ def validate_content(file, content_dir):
 		contents[field] = value
 	
 	# validate name
-	assert 'name' in contents
-	assert str(contents['name'])
-	assert len(contents['name']) <= 100
+	assert 'name' in contents, "Missing required field: 'name'"
+	assert str(contents['name']), "Invalid field: 'name'"
+	assert len(contents['name']) <= 100, "Length of field 'name' exceeds 100 characters"
 
 	# validate author
-	assert 'author' in contents
-	assert str(contents['author'])
-	assert len(contents['author']) <= 100
+	assert 'author' in contents, "Missing required field: 'author'"
+	assert str(contents['author']), "Invalid field: 'author'"
+	assert len(contents['author']) <= 100, "Length of field 'author' exceeds 100 characters"
 
 	# validate author_github
 	author_github = contents.get('author_github', '')
 	if not author_github == '':
-		assert str(author_github)
-		assert 'github.com' in author_github
-		assert requests(author_github)
+		assert str(author_github), "Invalid field: 'author_github'"
+		assert 'github.com' in author_github, "Field 'author_github must be a GitHub URL"
+		assert requests(author_github), "URL provided for field 'author_github' returned an error HTTP code when accessed"
 
 	# validate blurb
-	assert 'blurb' in contents
-	assert str(contents['blurb'])
-	assert len(contents['blurb']) <= 100
+	assert 'blurb' in contents, "Missing required field: 'blurb'"
+	assert str(contents['blurb']), "Invalid field: 'blurb'"
+	assert len(contents['blurb']) <= 100, "Length of field 'blurb' exceeds 100 characters"
 
 	# validate description
-	assert 'description' in contents
-	assert str(contents['description'])
-	assert len(contents['description']) <= 1000
+	assert 'description' in contents, "Missing required field: 'description'"
+	assert str(contents['description']), "Invalid field: 'description'"
+	assert len(contents['description']) <= 1000, "Length of field 'description' exceeds 1000 characters"
 
 	# validate url
-	assert 'url' in contents
-	assert str(contents['url'])
-	assert requests(contents['url'])
+	assert 'url' in contents, "Missing required field: 'url'"
+	assert str(contents['url']), "Invalid field: 'url'"
+	assert requests(contents['url']), "URL provided for field 'url' returned an error HTTP code when accessed"
 
 	# validate img
 	img = contents.get('img', '')
 	if not img == '':
 		reserved_file_names = ['about', 'default', 'willcarhartportfolio']
 		filename, _ = os.path.splitext(img)
-		assert not filename in reserved_file_names
-		assert os.path.isfile(f'{content_dir}/app_img/{img}')
+		assert not filename in reserved_file_names, "Filename provided for field 'img' is prohibited"
+		assert os.path.isfile(f'{content_dir}/app_img/{img}'), f"Filename provided for field 'img' not found, no such file '{content_dir}/app_img/{img}'"
 
 	# validate timestamp
-	assert 'timestamp' in contents
+	assert 'timestamp' in contents, "Missing required field: 'timestamp'"
 	assert not any(
 		re.match(regex, contents['timestamp'])
 		for regex in [
@@ -112,15 +112,15 @@ def validate_content(file, content_dir):
 			'..-..-.*',
 			'.*-..-..',
 		]
-	)
+	), "Value provided for field 'timestamp' is ambiguous"
 	try:
 		parse = parsedatetime.Calendar()
 		time_struct, parse_status = parse.parse(value)
-		assert parse_status == 0:
+		assert parse_status == 0, "Invalid field 'timestamp"
 		dt = datetime.datetime(*time_struct[:6])
 		timestamp = dt.timestamp()
 	except ValueError:
-		assert True is False
+		assert True is False, "Invalid field 'timestamp'"
 
 def main():
 	content_dir = os.path.abspath('../content/')
