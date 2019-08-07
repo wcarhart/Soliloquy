@@ -5,11 +5,11 @@ install:
   - pip install -r requirements.txt
 stages:
   - name: dev-test
-    if: type = pull_request AND NOT branch = master
+    if: $TRAVIS_EVENT_TYPE = "pull_request" AND NOT $TRAVIS_PULL_REQUEST_BRANCH = "master"
   - name: dev-deploy
-    if: type = pull_request AND NOT branch = master
+    if: $TRAVIS_EVENT_TYPE = "pull_request" AND NOT $TRAVIS_PULL_REQUEST_BRANCH = "master"
   - name: prod-deploy
-    if: type = pull_request AND branch = master
+    if: $TRAVIS_EVENT_TYPE = "pull_request" AND $TRAVIS_PULL_REQUEST_BRANCH = "master"
 
 jobs:
   include:
