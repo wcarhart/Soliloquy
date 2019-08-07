@@ -49,6 +49,14 @@ import datetime
 import parsedatetime
 
 class ContentError(object):
+	"""
+	Records the information necessary for a content error, to display as a GitHub comment
+		:status_code: (int) status of error, 1 is error, 0 is OK
+		:filename: (str) the name of the file that caused the validation error
+		:field: (str) the field in the file that caused the validation error
+		:short_message: (str) the short command line output of the error
+		:long_message: (str) the longer explanation of the error
+	"""
 	def __init__(self, status_code=1, filename="", field="", short_message="", long_message=""):
 		self.status_code = status_code
 		self.filename = filename
@@ -57,12 +65,17 @@ class ContentError(object):
 		self.long_message = long_message
 
 def cleanse(s):
+	"""
+	Clean a string
+		:s: (str) the string to clean
+	"""
 	return s.strip('"').strip("'").strip('\n').strip(' ')
 
 def validate_content(file, content_dir):
 	"""
 	Validate content for a file based on the rules listed in __doc__
 		:file: (str) the name of the content file to validate
+		:content_dir: (str) the path to the content directory
 	"""
 	with open(file, 'r') as f:
 		file_contents = [content.replace('\n', '') for content in f.readlines()]
@@ -273,34 +286,47 @@ def validate_content(file, content_dir):
 		long_message=long_message
 	)
 
-def update_template(template, result):
+def draft_github_comment(template, result):
+	"""
+	Use a template to draft a GitHub comment
+		:template: (str) the name of the template file
+		:result: (ContentError) the error to display in the comment
+	"""
+	# start with template
 	with open(template, 'r') as f:
 		contents = f.read()
 
+	# replace variables in template with ContentError values
 	for var in vars(result).keys():
 		contents = contents.replace(f'{{{{ {var} }}}}', str(getattr(result, var)))
 
 	return contents
 
 def update_github(results):
+	"""
+	Add a comment(s) to a PR in GitHub
+		:results: ([ContentError]) the list of errors to create comments for
+	"""
+	# build comment payloads
 	travis_pull_request = os.environ.get('TRAVIS_PULL_REQUEST')
 	error = False
 	payloads = []
 	for result in results:
 		if result.status_code == 1:
-			payload.append(update_template('scripts/error.md', result))
+			payload.append(draft_github_comment('scripts/error.md', result))
 			error = True
 	
 	if not error:
 		ce = ContentError(
-			status_code='',
+			status_code=0,
 			filename='',
 			field='',
 			short_message='',
 			long_message=''
 		)
-		payloads.append(update_template('scripts/success.md', ce))
+		payloads.append(draft_github_comment('scripts/success.md', ce))
 
+	# get key from Travis, use GitHub API to create PR comments
 	for payload in payloads:
 		GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 		headers = { 'Authorization': f'token {GITHUB_TOKEN}' }
@@ -313,6 +339,9 @@ def update_github(results):
 		print(payload)
 
 def main():
+	"""
+	Validate a list of content files
+	"""
 	content_dir = os.path.abspath('../content/')
 	files = glob.glob(f'{content_dir}/*.md')
 	if 'template.md' in files:
