@@ -7,6 +7,3 @@ script:
   - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] ; then python scripts/validate_content.py --travis-pull-request $TRAVIS_PULL_REQUEST; fi
   - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH != "master" ]] ; then scripts/dev-deploy.sh ; fi
   - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "master" ]] ; then scripts/prod-deploy.sh ; fi
-env:
-  matrix:
-    secure: pVSDsJF9Q9OcbRdYg5DQTGElyqDENDp9Hd0ccIPJesBtOg/wMZDmHj79IbaEqJ13vjBFCXmoXEbOGbu/HVXtD9rxG0SNwatk58YEaMDzq25y8TAY02Zm2Khg9FKGJZ0Q6UAHGP4ZCfVgvBR0uDGyOj/iSv4GDnz6+TIJBDN8UYaAueDQQe6Is+KpnNfctPf4oOZdBZB870b3IfBJ2kmVA8CYbZa+097waZ+afCaONwUbapanZbN40qeipV3PI0MtFn36P2SncVUbgLH0KNKTiTv5VcnajgXtT2tLY/RVteXRFMq/MZs8Ac+wYTWQDZ4y9nBUceavcQiiAF5aw7l3CmmzjbAdbhuDENFMG4iTaIaIZjVbS6f/1mQFuVbUNC4BPnNsuMPK3eQMLUj0njIT3YH/q3L/Rn7DE+e5kPE/ggcwtUN2AYUfsBQJthMcyO0xABeTfKT8XgERz6bBCtr5+Uq3hSwSqU08IeoelmPFx41666B3z9wUuemnQTZgFkbv36k1pW2W8u/LJhH1tlFse2H79Kb9s3lg0sKE0vOSaRcgY1euawZ+kiVhoBpV3QWL0Bdn3Snmq5MdQbDqdtkzXQeG0Lnnf3VvI+W2HEWpKwgijYF4z1w0w/nKfVwm/BpEzeGl715+d0NfIdWyHmW3/ZcQuo68JBObykDvZq7fqX0=
