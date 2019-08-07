@@ -305,6 +305,7 @@ def update_github(travis_pull_request, results):
 		GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 		headers = { 'Authorization': f'token {GITHUB_TOKEN}' }
 		content = f'{{"body":"{payload}"}}'
+		print(content)
 		response = requests.post(
 			f'https://api.github.com/repos/wcarhart/Soliloquy/issues/{travis_pull_request}/comments',
 			headers=headers,
