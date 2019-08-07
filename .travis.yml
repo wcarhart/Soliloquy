@@ -6,16 +6,10 @@ install:
 stages:
   - name: dev-test
     if: type = pull_request
-    branch:
-      except: master
   - name: dev-deploy
     if: type = pull_request
-    branch:
-      except: master
   - name: prod-deploy
     if: type = pull_request
-    branch:
-      only: master
 
 jobs:
   include:
@@ -32,6 +26,7 @@ jobs:
         - echo $TRAVIS_PULL_REQUEST_BRANCH
         - python scripts/test_dev_deploy.py
     - stage: prod-deploy
+      if: branch = master
       script: 
         - echo $TRAVIS_EVENT_TYPE
         - echo $TRAVIS_PULL_REQUEST
