@@ -37,22 +37,31 @@ img: willcarh.art.png
 timestamp: August 5th, 2019
 ```
 
-## Format restrictions
-The fields in `template.md` must adhere to the following format restrictions:
-* *name* **[required]** a string, maximum length is 100 characters
-* *author* **[required]** a string, maximum length is 100 characters
-* *author_github* **[optional]** a valid GitHub URL
-* *blurb* **[required]** a string, maximum length is 100 characters
-* *description* **[required]** a string, maximum length is 1000 characters
-* *url* **[required]** a valid URL
-* *img* **[optional]** a valid image filename for the corresponding image file in `content/img/` (if you do not provide an image, a default one will be provided for you)
-* *timestamp* **[required]** an unambiguous timestamp of today's date, suggested format is "Month Day, Year"
+## Format Restrictions
+*The fields in `template.md` must adhere to the following format restrictions.*
 
-There cannot be any name conflicts between filenames. If `project.md` already exists, you'll have to name your file `project2.md` or something like that. This goes for image files as well. However, this is not the case for the actual _project name_ in the content of the `.md` file, just the filename.
+| Field | Type | Required? | Restrictions |
+|:-----:|:----:|:---------:| ------------ |
+| `name` | *string* | yes | Maximum length is 100 characters |
+| `author` | *string* | yes | Maximum length is 100 characters |
+| `author_github` | *URL* | no | Must be a valid GitHub URL |
+| `blurb` | *string* | yes | Maximum length is 100 characters |
+| `description` | *string* | yes | Maximum length is 1000 characters |
+| `url` | *URL* | yes | Must be a valid URL |
+| `img` | *filename* | no | Must be the name of a valid image file (`.png`, `.jpg`, `.jpeg`, or `.gif`) that exists in `content/app_img/` |
+| `timestamp` | *time format* | yes | Must be an unambiguous timestamp of today's date, suggested format is *Month Day, Year* |
 
-In addition, images are scaled to fit within their display cards while still maintaining their aspect ratio. The maximum image height is 1000px (taller than 1000px will be cropped).
+**For optional fields, leave the value blank but still include the field name.** For example, if I don't want to include a link to my GitHub, I would use
+```
+author: Will Carhart
+author_github: 
+```
 
-These restrictions will be tested when you submit your PR by Soliloquy's CI.
+**There cannot be any name conflicts between filenames.** If `project.md` already exists, you'll have to name your file `project2.md` or something like that. This goes for image files as well. However, this is not the case for the actual `name` field in the content of the `.md` file, just the filename.
 
-## Content restrictions
+**Images are scaled to fit within their display cards while still maintaining their aspect ratio.** The maximum image height is 1000px (taller than 1000px will be cropped).
+
+*These restrictions will be tested when you submit your PR by Soliloquy's CI.*
+
+## Content Restrictions
 There are a few minor content restrictions for what is allowed on Soliloquy. Read about them in the [Soliloquy FAQs](https://www.soliloquy.dev/about).

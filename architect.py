@@ -43,7 +43,7 @@ def build_app(file):
 		elif field == 'url':
 			url = value
 		elif field == 'img':
-			img = value
+			img = 'default.png' if value == '' else value
 		elif field == 'timestamp':
 			try:
 				parse = parsedatetime.Calendar()

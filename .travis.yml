@@ -3,22 +3,7 @@ python:
   - "3.6.8"
 install:
   - pip install -r requirements.txt
-stages:
-  - name: dev-test
-    branches:
-      except: master
-  - name: dev-deploy
-    if: type = pull_request
-    branches:
-      except: master
-  - name: prod-deploy
-    if: type = pull_request AND branch = master
-
-jobs:
-  include:
-    - stage: dev-test
-      script: python scripts/test_dev_test.py
-    - stage: dev-deploy
-      script: python scripts/test_dev_deploy.py
-    - stage: prod-deploy
-      script: python scripts/test_prod_deploy.py
+script:
+  - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] ; then python scripts/test_content.py ; fi
+  - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH != "master" ]] ; then scripts/dev-deploy.sh ; fi
+  - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "master" ]] ; then scripts/prod-deploy.sh ; fi
