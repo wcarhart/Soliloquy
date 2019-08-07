@@ -46,7 +46,6 @@ import glob
 import json
 import requests
 import datetime
-import argparse
 import parsedatetime
 
 class ContentError(object):
@@ -283,7 +282,8 @@ def update_template(template, result):
 
 	return contents
 
-def update_github(travis_pull_request, results):
+def update_github(results):
+	travis_pull_request = os.environ.get('TRAVIS_PULL_REQUEST')
 	error = False
 	payloads = []
 	for result in results:
@@ -305,33 +305,21 @@ def update_github(travis_pull_request, results):
 		GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 		headers = { 'Authorization': f'token {GITHUB_TOKEN}' }
 		content = f'{{"body":"{payload}"}}'
-		print(content)
 		response = requests.post(
 			f'https://api.github.com/repos/wcarhart/Soliloquy/issues/{travis_pull_request}/comments',
 			headers=headers,
 			data=content.encode('utf-8')
 		)
-		print(response.status_code)
-		print(response.json())
 		print(payload)
 
-
-def build_parser():
-	parser = argparse.ArgumentParser(description=__doc__, formatter_class = argparse.ArgumentDefaultsHelpFormatter)
-	parser.add_argument('--travis-pull-request', type=int, required=True)
-	return parser
-
 def main():
-	parser = build_parser()
-	args = parser.parse_args()
-
 	content_dir = os.path.abspath('../content/')
 	files = glob.glob(f'{content_dir}/*.md')
 	if 'template.md' in files:
 		del files['template.md']
 
 	results = [validate_content(file, content_dir) for file in files]
-	update_github(args.travis_pull_request, results)
+	update_github(results)
 
 if __name__ == '__main__':
 	main()
