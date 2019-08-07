@@ -4,4 +4,4 @@ python:
 install:
   - pip install -r requirements.txt
 script:
-  - if [[ $TRAVIS_EVENT_TYPE == "master" ]] ; then scripts/test.sh ; fi
+  - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] ; then scripts/test.sh ; fi
