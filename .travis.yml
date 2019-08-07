@@ -4,4 +4,5 @@ python:
 install:
   - pip install -r requirements.txt
 script:
-  - ./test.sh
+  if: type = pull_request
+  - scripts/test.sh
