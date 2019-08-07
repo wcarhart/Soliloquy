@@ -308,7 +308,7 @@ def update_github(travis_repo_slug, travis_pull_request, results):
 		requests.post(
 			f'https://api.github.com/repos/{travis_repo_slug}/issues/{travis_pull_request}/comments',
 			headers=headers,
-			data=content
+			data=content.encode('utf-8')
 		)
 		print(payload)
 
