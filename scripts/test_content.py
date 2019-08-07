@@ -77,7 +77,7 @@ def validate_content(file, content_dir):
 	if not author_github == '':
 		assert str(author_github), "Invalid field: 'author_github'"
 		assert 'github.com' in author_github, "Field 'author_github must be a GitHub URL"
-		assert requests(author_github), "URL provided for field 'author_github' returned an error HTTP code when accessed"
+		assert requests.get(author_github), "URL provided for field 'author_github' returned an error HTTP code when accessed"
 
 	# validate blurb
 	assert 'blurb' in contents, "Missing required field: 'blurb'"
@@ -92,7 +92,7 @@ def validate_content(file, content_dir):
 	# validate url
 	assert 'url' in contents, "Missing required field: 'url'"
 	assert str(contents['url']), "Invalid field: 'url'"
-	assert requests(contents['url']), "URL provided for field 'url' returned an error HTTP code when accessed"
+	assert requests.get(contents['url']), "URL provided for field 'url' returned an error HTTP code when accessed"
 
 	# validate img
 	img = contents.get('img', '')
@@ -116,7 +116,7 @@ def validate_content(file, content_dir):
 	try:
 		parse = parsedatetime.Calendar()
 		time_struct, parse_status = parse.parse(value)
-		assert parse_status == 0, "Invalid field 'timestamp"
+		assert parse_status == 1, f"Invalid field 'timestamp'"
 		dt = datetime.datetime(*time_struct[:6])
 		timestamp = dt.timestamp()
 	except ValueError:
@@ -126,7 +126,8 @@ def main():
 	content_dir = os.path.abspath('../content/')
 	files = glob.glob(f'{content_dir}/*.md')
 	for file in files:
-		validate_content(file)
+		print(f"Validating {file}...")
+		validate_content(file, content_dir)
 
 if __name__ == '__main__':
 	main()
