@@ -4,7 +4,7 @@ python:
 install:
   - pip install -r requirements.txt
 script:
-  - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] ; then python scripts/validate_content.py --travis-repo-slug $TRAVIS_REPO_SLUG --travis-pull-request $TRAVIS_PULL_REQUEST; fi
+  - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] ; then python scripts/validate_content.py --travis-pull-request $TRAVIS_PULL_REQUEST; fi
   - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH != "master" ]] ; then scripts/dev-deploy.sh ; fi
   - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "master" ]] ; then scripts/prod-deploy.sh ; fi
 env:
