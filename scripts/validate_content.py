@@ -284,21 +284,27 @@ def update_template(template, result):
 	return contents
 
 def update_github(travis_repo_slug, travis_pull_request, results):
+	error = False
+	payloads = []
 	for result in results:
 		if result.status_code == 1:
-			payload = update_template('error.md', result)
-		else:
-			payload = update_template('success.md', result)
+			payload.append(update_template('error.md', result))
+			error = True
+	
+	if not error:
+		payloads.append(update_template('success.md', result))
 
-	GAUTH = os.environ.get('GAUTH')
-	headers = { 'Authorization': f'token {GAUTH}' }
-	content = { 'body': f'{payload}' }
-	requests.post(
-		f'https://api.github.com/repos/{travis_repo_slug}/issues/{travis_pull_request}/comments',
-		headers=headers,
-		data=content
-	)
-	print(payload)
+	for payload in payloads:
+		GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
+		headers = { 'Authorization': f'token {GITHUB_TOKEN}' }
+		content = f'{{"body":"{payload}"}}'
+		requests.post(
+			f'https://api.github.com/repos/{travis_repo_slug}/issues/{travis_pull_request}/comments',
+			headers=headers,
+			data=content
+		)
+		print(payload)
+
 
 def build_parser():
 	parser = argparse.ArgumentParser(description=__doc__, formatter_class = argparse.ArgumentDefaultsHelpFormatter)
