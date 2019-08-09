@@ -10,7 +10,7 @@ What to submit your own project? Follow the instructions below.
 
 ## Instructions for Contributing
 1. [Fork this repository](https://help.github.com/en/articles/fork-a-repo).
-2. Edit the file `content/template.md`. Use the format described below. When you're done, rename the file `template.md` to the name of your project (e.g. `myproject.md`). If you'd like to add a cover image for your project, add it to the `content/img/` folder. 
+2. Edit the file `content/template.md`. Use the format described below. When you're done, rename the file `template.md` to the name of your project (e.g. `myproject.md`). If you'd like to add a cover image for your project, add it to the `content/app_img/` folder. 
 3. Open a new [pull requst](https://help.github.com/en/articles/creating-a-pull-request). Once merged, your project will appear on Soliloquy.
 
 ## Formatting your Contribution Content
@@ -51,13 +51,15 @@ timestamp: August 5th, 2019
 | `img` | *filename* | no | Must be the name of a valid image file (`.png`, `.jpg`, `.jpeg`, or `.gif`) that exists in `content/app_img/` |
 | `timestamp` | *time format* | yes | Must be an unambiguous timestamp of today's date, suggested format is *Month Day, Year* |
 
-**For optional fields, leave the value blank but still include the field name.** For example, if I don't want to include a link to my GitHub, I would use
+**For optional fields, leave the value blank but still include the field name.** For example, if I don't want to include a link to my GitHub, I would use:
 ```
+name: willcarh.art
 author: Will Carhart
-author_github: 
+author_github:
+...
 ```
 
-**There cannot be any name conflicts between filenames.** If `project.md` already exists, you'll have to name your file `project2.md` or something like that. This goes for image files as well. However, this is not the case for the actual `name` field in the content of the `.md` file, just the filename.
+**There cannot be any name conflicts between filenames.** If `project.md` already exists, you'll have to name your file `project2.md` or something like that. The same goes for image files. However, this is not the case for the actual `name` field in the content of the `.md` file, just the filename.
 
 **Images are scaled to fit within their display cards while still maintaining their aspect ratio.** The maximum image height is 1000px (taller than 1000px will be cropped).
 
