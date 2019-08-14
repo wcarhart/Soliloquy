@@ -1,5 +1,7 @@
 #!/bin/bash
 set -e
+git status
+exit
 git remote update
 git fetch
 git checkout "$TRAVIS_PULL_REQUEST_BRANCH"
