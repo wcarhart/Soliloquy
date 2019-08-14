@@ -1,10 +1,6 @@
 #!/bin/bash
 set -e
-(
-  echo "$HEROKU_CREDENTIALS_EMAIL"
-  echo "$HEROKU_CREDENTIALS_PASSWORD"
-) | heroku login
-
+heroku login
 git push soliloquy-dev "$TRAVIS_PULL_REQUEST_BRANCH":master
 heroku run --app soliloquy-dev python manage.py makemigrations
 heroku run --app soliloquy-dev python manage.py migrate
