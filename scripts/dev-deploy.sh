@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-heroku login
 git fetch
 echo "git checkout -b $TRAVIS_PULL_REQUEST_BRANCH origin/$TRAVIS_PULL_REQUEST_BRANCH"
 git checkout -b "$TRAVIS_PULL_REQUEST_BRANCH" origin/"$TRAVIS_PULL_REQUEST_BRANCH"
