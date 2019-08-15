@@ -5,7 +5,6 @@ git:
   depth: false
 install:
   - pip install -r requirements.txt
-  - gem install heroku
 script:
   - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH != "master" ]] ; then echo dev ; python scripts/validate_content.py && scripts/dev-deploy.sh ; fi
   - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "master" ]] ; then echo prod ; scripts/prod-deploy.sh ; fi
