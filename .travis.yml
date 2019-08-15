@@ -1,10 +1,10 @@
 language: python
 python:
   - "3.6.8"
+git:
+  depth: false
 install:
   - pip install -r requirements.txt
-  - git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
-  - git fetch --unshallow --tags
 script:
   - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH != "master" ]] ; then echo dev ; python scripts/validate_content.py ; scripts/dev-deploy.sh ; fi
   - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "master" ]] ; then echo prod ; scripts/prod-deploy.sh ; fi
