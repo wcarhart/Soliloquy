@@ -10,4 +10,4 @@ git remote add heroku git@heroku.com:soliloquy-dev.git
 git push heroku "$TRAVIS_PULL_REQUEST_BRANCH":master
 heroku run --app soliloquy-dev python manage.py makemigrations
 heroku run --app soliloquy-dev python manage.py migrate
-python architect.py
+heroku run --app soliloquy-dev python architect.py

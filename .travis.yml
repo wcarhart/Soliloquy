@@ -6,14 +6,10 @@ git:
 install:
   - pip install -r requirements.txt
 script:
-  - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH != "master" ]] ; then echo dev ; python scripts/validate_content.py ; fi
+  - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH != "master" ]] ; then echo dev ; python scripts/validate_content.py && scripts/dev-deploy.sh fi
   - if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] && [[ $TRAVIS_PULL_REQUEST_BRANCH == "master" ]] ; then echo prod ; scripts/prod-deploy.sh ; fi
 deploy:
   provider: heroku
   api_key:
     secure: PkJ0YqI4WKwniQ8Kr45AeXTMEwMwiR2cqP+OcaQVxPEfM705XNFXYfVMJ7JrX1wQQ5RDZ+4PwdECfIfTZQvYma7HJJTt1h6VVn66mCCGUBFcfDVkeGuLKY1y3LfRGcYjMwB7iWP603WvjicMbLN7YefZLPah6rPsJxCH5wydsl0ZnZuqWZfd5MqBPwL07BzrjIEVE5mfyMIUGz628k2rSjUMzPcjOJ9s2CcbcQ3S6xcfDUyU3lA9axVFBGn8W3KF84tMlanaj6gkUys/9BreYf3uSTNsUMTNFqrB2s06Srr1TcXRE9JHmQH8NhswVHWFa5Bv+WGVdIaHZKydjmSx1qPWj/TdIQ2J2tjte7EDSN02iq7mXMp4qj60EKhm60tbO4h1ZRi5wws5EczRZecStVb4+oa535TXFnOkWJrDIeeGOuuaDt50M4TZhcjRLo3wJp1HsxhZRX/Mt3TFSUawAVqKPyZe1FvxCexmKsjY4nSdB/f8dyJnjvIjkNdYq7FkGyFGVOpMUd1R5Bkv2M10xDG2IJLQZD1UP80G39sshi0IhW494HbvvOi6cnsOYyFAybQ32ZixLNi+K9vTUgfgRtBRE7nrsUHfOhyWbY6d/FE7/8U9dCCKDdgqpiSn0A0lLvdc+ICcNxYpMgsS73/yTikJb2Si44eEZzZ2Psc+DGs=
   app: soliloquy-dev
-after-deploy:
-  - heroku run --app soliloquy-dev python manage.py makemigrations
-  - heroku run --app soliloquy-dev python manage.py migrate
-  - heroku run --app soliloquy-dev python architect.py
