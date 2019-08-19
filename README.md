@@ -1,8 +1,7 @@
 # [Soliloquy](https://www.soliloquy.dev) [![Build Status](https://travis-ci.org/wcarhart/Soliloquy.svg?branch=master)](https://travis-ci.org/wcarhart/Soliloquy)
 (n) an act of speaking one's thoughts aloud when by oneself or regardless of any hearers
 
-## Soliloquy is a place to display and explore cool software hobby projects.
-#### Take a peek for yourself: https://www.soliloquy.dev
+## [Soliloquy](https://www.soliloquy.dev) is a place to display and explore cool software hobby projects.
 What to submit your own project? Follow the instructions below.
 
 ## Instructions for Contributing
