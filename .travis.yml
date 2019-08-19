@@ -6,5 +6,5 @@ git:
 install:
   - pip install -r requirements.txt
 script:
-  - if [[ $TRAVIS_EVENT_TYPE == "pull_request" && $TRAVIS_PULL_REQUEST_BRANCH != "master" ]] ; then echo "#========== RUNNING DEV STAGING ==========#" ; python scripts/validate_content.py && scripts/dev-deploy.sh ; fi
-  - if [[ $TRAVIS_EVENT_TYPE == "pull_request" && $TRAVIS_PULL_REQUEST_BRANCH == "master" ]] ; then echo "#========== PROD DEPLOY ==========#" ; scripts/prod-deploy.sh ; fi
+  - if [[ $TRAVIS_EVENT_TYPE == "pull_request" && $TRAVIS_PULL_REQUEST_BRANCH != "master" ]] ; then echo ; echo "#========== RUNNING DEV STAGING ==========#" ; python scripts/validate_content.py && scripts/dev-deploy.sh ; fi
+  - if [[ $TRAVIS_EVENT_TYPE == "push" && $TRAVIS_BRANCH == "master" ]] ; then echo ; echo "#========== PROD DEPLOY ==========#" ; scripts/prod-deploy.sh ; fi
