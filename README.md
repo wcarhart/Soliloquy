@@ -45,7 +45,7 @@ timestamp: August 5th, 2019
 | `description` | *string* | yes | Maximum length is 1000 characters |
 | `url` | *URL* | yes | Must be a valid URL |
 | `img` | *filename* | no | Must be the name of a valid image file (`.png`, `.jpg`, `.jpeg`, or `.gif`) that exists in `content/app_img/` |
-| `timestamp` | *time format* | yes | Must be an unambiguous timestamp of today's date, suggested format is *Month Day, Year* |
+| `timestamp` | *time format* | yes | Must be an unambiguous timestamp of today's date, suggested format is *Month Day, Year* (e.g. `June 18th, 2019`) |
 
 **For optional fields, leave the value blank but still include the field name.** For example, if I don't want to include a link to my GitHub, I would use:
 ```
