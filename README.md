@@ -1,7 +1,4 @@
-# Soliloquy is currently in ALPHA
-I will not be taking any project contributions until Soliloquy is fully released. I appreciate your patience. You can view the dev concept at https://soliloquy-dev.herokuapp.com.
-
-# [Soliloquy](https://www.soliloquy.dev)
+# [Soliloquy](https://www.soliloquy.dev) [![Build Status](https://travis-ci.org/wcarhart/Soliloquy.svg?branch=master)](https://travis-ci.org/wcarhart/Soliloquy)
 (n) an act of speaking one's thoughts aloud when by oneself or regardless of any hearers
 
 ## Soliloquy is a place to display and explore cool software hobby projects.
