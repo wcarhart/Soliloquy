@@ -6,8 +6,8 @@ What to submit your own project? Follow the instructions below.
 
 ## Instructions for Contributing
 1. [Fork this repository](https://help.github.com/en/articles/fork-a-repo).
-2. Edit the file `content/template.md`. Use the format described below. When you're done, rename the file `template.md` to the name of your project (e.g. `myproject.md`). If you'd like to add a cover image for your project, add it to the `content/app_img/` folder. 
-3. Open a new [pull requst](https://help.github.com/en/articles/creating-a-pull-request). Once merged, your project will appear on Soliloquy.
+2. Add a new markdown (`.md`) file in `content/` for your project. Use the format described below. Name the file the name of your project (i.e. `myproject.md`). If you'd like to add a cover image for your project, add it to the `content/app_img/` folder. 
+3. Open a new [pull request](https://help.github.com/en/articles/creating-a-pull-request). Once merged, your project will appear on Soliloquy!
 
 ## Formatting your Contribution Content
 Use the following format when updating `template.md`:
@@ -45,7 +45,7 @@ timestamp: August 5th, 2019
 | `description` | *string* | yes | Maximum length is 1000 characters |
 | `url` | *URL* | yes | Must be a valid URL |
 | `img` | *filename* | no | Must be the name of a valid image file (`.png`, `.jpg`, `.jpeg`, or `.gif`) that exists in `content/app_img/` |
-| `timestamp` | *time format* | yes | Must be an unambiguous timestamp of today's date, suggested format is *Month Day, Year* |
+| `timestamp` | *time format* | yes | Must be an unambiguous timestamp of today's date, suggested format is *Month Day, Year* (e.g. `June 18th, 2019`) |
 
 **For optional fields, leave the value blank but still include the field name.** For example, if I don't want to include a link to my GitHub, I would use:
 ```
