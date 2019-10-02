@@ -7,7 +7,7 @@ install:
   - pip install -r requirements.txt
 script:
   - if [[ $TRAVIS_COMMIT_MESSAGE != *"NOTRAVIS"* && $TRAVIS_EVENT_TYPE == "pull_request" ]] ; then echo ; echo "#========== RUNNING TESTS ==========#" ; python scripts/validate_content.py ; fi
-  - if [[ $TRAVIS_COMMIT_MESSAGE != *"NOTRAVIS"* && $TRAVIS_EVENT_TYPE == "pull_request" && $TRAVIS_PULL_REQUEST_BRANCH != "master" ]] ; then echo ; echo "#========== DEV DEPLOY ==========#" ; scripts/dev-deploy.sh ; fi
+  # - if [[ $TRAVIS_COMMIT_MESSAGE != *"NOTRAVIS"* && $TRAVIS_EVENT_TYPE == "pull_request" && $TRAVIS_PULL_REQUEST_BRANCH != "master" ]] ; then echo ; echo "#========== DEV DEPLOY ==========#" ; scripts/dev-deploy.sh ; fi
 deploy:
   provider: heroku
   api_key:
