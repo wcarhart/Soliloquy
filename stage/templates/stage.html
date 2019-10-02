@@ -88,7 +88,7 @@
 									</span>
 									<p class="card-text" id="more{{ app.id }}">{{ app.description }}</p>
 									<div class="row">
-										<a href="{{ app.url }}" target="_blank" class="btn btn-primary">Explore</a>
+										<a href="{{ app.url }}" target="_blank" onclick="event.stopPropagation();" class="btn btn-primary">Explore</a>
 									</div>
 									<div class="row minimal">
 										<p class="card-text minimal"><small class="text-muted">{{ app.timestamp|time }}</small></p>
