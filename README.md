@@ -10,7 +10,7 @@ What to submit your own project? Follow the instructions below.
 3. Open a new [pull request](https://help.github.com/en/articles/creating-a-pull-request). Once merged, your project will appear on Soliloquy!
 
 ## Formatting your Contribution Content
-Use the following format when updating `template.md`:
+Use the following format when editing your `.md` file:
 ```
 name: name of your project
 author: your full name
@@ -58,6 +58,8 @@ author_github:
 **There cannot be any name conflicts between filenames.** If `project.md` already exists, you'll have to name your file `project2.md` or something like that. The same goes for image files. However, this is not the case for the actual `name` field in the content of the `.md` file, just the filename.
 
 **Images are scaled to fit within their display cards while still maintaining their aspect ratio.** The maximum image height is 1000px (taller than 1000px will be cropped).
+
+**Your file must be a Markdown file (`.md`).** Other file types will not be parsed.
 
 *These restrictions will be tested when you submit your PR by Soliloquy's CI.*
 

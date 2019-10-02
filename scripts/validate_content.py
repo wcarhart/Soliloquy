@@ -95,6 +95,15 @@ def validate_content(file, content_dir):
 	loop = True
 	while(loop):
 		loop = False
+
+		# validate filetype
+		field = ''
+		filetype = os.path.splitext(file)[-1]
+		if not filetype == '.md':
+			status_code = 1
+			short_message = "invalid filetype"
+			long_message = f"File type `{filetype}` is not supported. Please ensure that your contribution is written in a Markdown file (`.md`)."
+			break
 	
 		# validate name
 		field = 'name'
@@ -313,7 +322,7 @@ def update_github(results):
 	payloads = []
 	for result in results:
 		if result.status_code == 1:
-			payload.append(draft_github_comment('scripts/error.md', result))
+			payloads.append(draft_github_comment('scripts/error.md', result))
 			error = True
 	
 	if not error:
@@ -342,8 +351,8 @@ def main():
 	"""
 	Validate a list of content files
 	"""
-	content_dir = os.path.abspath('../content/')
-	files = glob.glob(f'{content_dir}/*.md')
+	content_dir = os.path.abspath('content/')
+	files = [f for f in glob.glob(f'{content_dir}/*') if os.path.isfile(f)]
 	if 'template.md' in files:
 		del files['template.md']
 
