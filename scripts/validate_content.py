@@ -220,6 +220,11 @@ def validate_content(file, content_dir):
 			status_code = 1
 			short_message = "invalid field `url`"
 			break
+		if 'github.com' in contents['url']:
+			status_code = 1
+			short_message = "URL provided for field `url` is a GitHub repository"
+			long_message = f"It appears the URL for this contribution ({contents['url']}) is a GitHub repository, not a published web app. Unfortunately, Soliloquy is not a portfolio for source code. Please refer to the FAQs for more information: https://www.soliloquy.dev/about/"
+			break
 		try:
 			response = requests.get(contents['url'], timeout=15)
 			if not response:
