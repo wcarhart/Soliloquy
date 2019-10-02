@@ -59,7 +59,7 @@ author_github:
 
 **Images are scaled to fit within their display cards while still maintaining their aspect ratio.** The maximum image height is 1000px (taller than 1000px will be cropped).
 
-*These restrictions will be tested when you submit your PR by Soliloquy's CI.*
+*These restrictions will be tested when you submit your PR by Soliloquy's CI. *
 
 ## Content Restrictions
 There are a few minor content restrictions for what is allowed on Soliloquy. Read about them in the [Soliloquy FAQs](https://www.soliloquy.dev/about).
