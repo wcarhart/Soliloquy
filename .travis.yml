@@ -14,6 +14,6 @@ deploy:
     secure: j+UmdYdZLe2vD9NZCPlMlTM0suOibuVCD7bQONJxVrZi+jL0wgZu3bGhe47KX/doPi7mUzFjQvgDCuBOVt4Xcst45+KPeMVV8dv2b0MKFHTxjRy0lRWvpZBbrQOpjnjvmdVEAZxT+4bXTt2DfqEAnJAHsQ8laoPRWGtkzB5MamYVKLOCMXSuNITPo0QsGAsH6B21M7SsYQYriKwqdmgOiLAcNPQDrWGSoj6R7WW2KBDgl1VOof8Pu1nMgsPQli9z7paK0bO3dX+hN/yzsS0zJtjvMA7E6LPUWAFCBzlcDjCL3bVJPgZ5SrjqWmuw6oQa8MQuPTYNGj7AHuB7bwUH/QMq1ECk77M0VPSefU/34fNtluefJZW0ljBQ/WDOmi9FMjVnS35VdZ5anXUTYtvBkwhfoiBqLB0/jlwsylscR1ch9ovExV7sGW7eB3TZ4qfn4OumnNHow9yfgxyc42hO4VCbs+EFi+JF56micvNZJ2EtuKXWTIhRvdApRospssG4KPFl/6Jzi/+AT3XgY+yqxeAbWZf0gFq5s1XlcTnwcoC7zzpMRMoLeUxDwCubknWtbvB1g7SdQQRthDICZ3qYoqcQyDcGj6BfJqd7uO0dY0cISPg5rO/kL1yraoSWitZ4Rb0L0klr6melA05FMAyd9FFK4JDVw5GIcXPIn9n0YGk=
   app: soliloquy-prod
   run:
-    - python manage.py makemigrations
-    - python manage.py migrate
-    - python architect.py
+    - heroku run --app soliloquy-prod python manage.py makemigrations
+    - heroku run --app soliloquy-prod python manage.py migrate
+    - heroku run --app soliloquy-prod python architect.py
