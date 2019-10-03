@@ -327,6 +327,7 @@ def update_github(results):
 	payloads = []
 	for result in results:
 		if result.status_code == 1:
+			print(f'I\'m adding an error payload for {result.short_message}')
 			payloads.append(draft_github_comment('scripts/error.md', result))
 			error = True
 	
@@ -345,6 +346,7 @@ def update_github(results):
 		GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 		headers = { 'Authorization': f'token {GITHUB_TOKEN}' }
 		content = f'{{"body":"{payload}"}}'
+		print(f'I\'m add a comment to PR {travis_pull_request}')
 		response = requests.post(
 			f'https://api.github.com/repos/wcarhart/Soliloquy/issues/{travis_pull_request}/comments',
 			headers=headers,
